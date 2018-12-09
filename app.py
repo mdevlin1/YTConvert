@@ -42,7 +42,7 @@ class YTConvert(QMainWindow):
         viewMenu = mMenu.addMenu("View")
         toolsMenu = mMenu.addMenu("Tools")
         helpMenu = mMenu.addMenu("Help")
-            
+
         hbox = QHBoxLayout()
 
         self.font = QFont("default", 9)
@@ -72,18 +72,22 @@ class YTConvert(QMainWindow):
         self.owDialog.setWindowTitle("Overwrite File")
 
         v2Widg = QWidget()
+
         self.vbox2 = QVBoxLayout()
         v2Widg.setMinimumSize(375,0)
         q = QLabel()
+        file = QPlainTextEdit()
         dLabel = QLabel()
         self.progress = QProgressBar()
         q.setText("Download Progress")
         q.setFont(self.font)
+        file.setMinimumSize(50,0)
         #dLabel.setText("No Downloads in Progress")
         self.vbox2.addWidget(q)
+        #self.vbox2.addWidget(file)
         self.vbox2.setAlignment(Qt.AlignTop)
         v2Widg.setLayout(self.vbox2)
-
+        
         hbox.addWidget(v1Widg)
         hbox.addWidget(v2Widg)
         mainWidg.setFixedSize(750,300)
