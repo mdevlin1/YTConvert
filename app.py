@@ -14,8 +14,10 @@ import QWDialog
 def main():
     app = QApplication(sys.argv)
     app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
-    
-    yt = ytc.YTConvert()
+    resx = app.desktop().screenGeometry().width()
+    resy = app.desktop().screenGeometry().height()
+
+    yt = ytc.YTConvert(resx, resy)
     sys.exit(app.exec_())
 
 main()

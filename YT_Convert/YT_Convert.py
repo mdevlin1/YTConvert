@@ -8,8 +8,10 @@ from PyQt5.QtCore import *
 import QWDialog
 
 class YTConvert(QMainWindow):
-    def __init__(self):
+    def __init__(self, w, h):
         super(YTConvert, self).__init__()
+        self.resx = w
+        self.resy = h
         self.initUI()
 
     def initUI(self):
@@ -28,7 +30,7 @@ class YTConvert(QMainWindow):
         self.font = QFont("default", 9)
         v1Widg = QWidget()
         vbox1 = QVBoxLayout()
-        v1Widg.setMinimumSize(375,0)
+        v1Widg.setMinimumSize(int(self.resx * (1/5)),0)
         descLabel = QLabel(text="Enter YouTube links seperated by commas: ")
         descLabel.setFont(self.font)
         t = QPlainTextEdit()
@@ -55,14 +57,14 @@ class YTConvert(QMainWindow):
 
         self.recentDown = []
         self.vbox2 = QVBoxLayout()
-        v2Widg.setMinimumSize(375,0)
+        v2Widg.setMinimumSize(int(self.resx * (1/5)),0)
         q = QLabel()
         file = QPlainTextEdit()
         dLabel = QLabel()
         self.progress = QProgressBar()
         q.setText("Recent Downloads")
         q.setFont(self.font)
-        file.setMinimumSize(50,0)
+        file.setMinimumSize(int(self.resx * (1/40)),0)
         #dLabel.setText("No Downloads in Progress")
         self.vbox2.addWidget(q)
         #self.vbox2.addWidget(file)
@@ -71,11 +73,11 @@ class YTConvert(QMainWindow):
         
         hbox.addWidget(v1Widg)
         hbox.addWidget(v2Widg)
-        mainWidg.setFixedSize(750,300)
+        mainWidg.setFixedSize(int(self.resx * (1/2.5)), int(self.resy * (1/4)))
         mainWidg.setLayout(hbox)    
 
         self.setCentralWidget(mainWidg)
-        self.setFixedSize(800,500)
+        self.setFixedSize(int(self.resx * (1/2.5)), int(self.resy * (1/2)))
         self.setWindowTitle("Convert YouTube videos to mp3s")
         self.show()
 
